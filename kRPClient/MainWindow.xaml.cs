@@ -56,12 +56,12 @@ namespace kRPClient
                 var ip = await this.ShowInputAsync("Enter IP", "Enter an IP address to connect to. Leave empty to connect to localhost.");
                 IPAddress address = IPAddress.Parse(string.IsNullOrWhiteSpace(ip) ? "127.0.0.1" : ip);
                 Viewmodel.ConnectAndStartPolling(address);
-                LoadMask.Visibility = System.Windows.Visibility.Collapsed;
+                SetLoadMaskVisibility(false);
             }
             catch(Exception exc)
             {
                 Notifications.LastErrorMessage = string.Format("Could not connect to KRPC-Server: {0}", exc.Message);
-                LoadMask.Visibility = System.Windows.Visibility.Visible;
+                SetLoadMaskVisibility(true);
             }
         }
 
@@ -70,5 +70,12 @@ namespace kRPClient
             Application.Current.Shutdown();
         }
 
+        void SetLoadMaskVisibility(bool visible)
+        {
+            this.Dispatcher.Invoke((Action)(() =>
+                {
+                    LoadMask.Visibility = visible ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
+                }));
+        }
     }
 }
