@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="kRPClient.Displays.MapDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+    <Viewbox>
+        <Canvas Width="{Binding MapCoordinates.DisplayWidth}" Height="{Binding MapCoordinates.DisplayHeight}">
+            <Image Width="{Binding MapCoordinates.DisplayWidth}" Height="{Binding MapCoordinates.DisplayHeight}" Panel.ZIndex="10" Source="{Binding MapCoordinates.MapImagePath}">
+                <!--
+                <Image.Source>
+                    <BitmapImage UriSource="{Binding MapCoordinates.MapImagePath}" />
+                </Image.Source>
+                -->
+            </Image>
+            <Image Width="{Binding MapCoordinates.ShapeSize}" Height="{Binding MapCoordinates.ShapeSize}" Canvas.Left="{Binding MapCoordinates.PositionX}" Canvas.Bottom="{Binding MapCoordinates.PositionY}" Panel.ZIndex="20">
+                <Image.Source>
+                    <BitmapImage UriSource="/Icons/communication6.png" />
+                </Image.Source>
+            </Image>
+            <!--<Ellipse Width="{Binding MapCoordinates.ShapeAscendingNodeSize}" Height="{Binding MapCoordinates.ShapeAscendingNodeSize}" Canvas.Left="{Binding MapCoordinates.PositionAscendingNodeX}" Canvas.Bottom="{Binding MapCoordinates.PositionAscendingNodeY}" Panel.ZIndex="20" Fill="Green"/>-->
+        </Canvas>
+    </Viewbox>
+</UserControl>

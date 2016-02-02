@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="kRPClient.Displays.ResourcesDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+    <Grid Name="ResourceGrid" ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="HeaderLabel" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="16" />
+        <Label  Content=" asdasd" Name="ASD" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" FontSize="16" />
+        
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" ItemsSource="{Binding Resources.Fuels, Mode=OneWay}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Resource" Binding="{Binding Name}" />
+                <DataGridTemplateColumn Header="Progress" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ProgressBar Value="{Binding Ammount}" Minimum="0" Maximum="{Binding Value.Maximum}" Height="32"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Ammount" Binding="{Binding Ammount}" SortMemberPath="Ammount" />
+                <DataGridTextColumn Header="Maxmium" Binding="{Binding Maximum}" SortMemberPath="Maximum" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
