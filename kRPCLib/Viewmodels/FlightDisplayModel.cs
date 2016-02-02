@@ -48,6 +48,12 @@ namespace kRPCLib.Viewmodels
             private set;
         }
 
+        public NotificationView Notifications
+        {
+            get;
+            set;
+        }
+
         public OrbitViewModel Orbit
         {
             get;
@@ -66,16 +72,16 @@ namespace kRPCLib.Viewmodels
             private set;
         }
 
-        public NotificationView Notifications
-        {
-            get;
-            set;
-        }
-
         public bool ShouldPoll
         {
             get { return _shouldPoll; }
             set { _shouldPoll = value; }
+        }
+
+        public void ConnectAndStartPolling(IPAddress address)
+        {
+            Connection connection = new Connection("HEL.AEROSPACE Flight Viewer", address);
+            SetConnectionAndStartPolling(connection);
         }
 
         public void SetConnectionAndStartPolling(KRPC.Client.Connection connection)
@@ -120,12 +126,6 @@ namespace kRPCLib.Viewmodels
                 }
                 Thread.Sleep(100);
             }
-        }
-
-        public void ConnectAndStartPolling(IPAddress address)
-        {
-            Connection connection = new Connection("HEL.AEROSPACE Flight Viewer", address);
-            SetConnectionAndStartPolling(connection);
         }
     }
 }
