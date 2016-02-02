@@ -1,5 +1,6 @@
 ﻿using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
+using KRPC.Client.Services.KRPC;
 using System;
 using System.Net;
 using System.Threading;
@@ -12,7 +13,7 @@ namespace kRPCLib.Viewmodels
         private string _flightName;
         private Thread _pollingThread;
         private bool _shouldPoll;
-        private Service _spaceCenter;
+        private KRPC.Client.Services.SpaceCenter.Service _spaceCenter;
 
         public FlightDisplayModel(NotificationView notifications)
         {
@@ -78,6 +79,14 @@ namespace kRPCLib.Viewmodels
             set { _shouldPoll = value; }
         }
 
+        public bool IsConnected
+        {
+            get
+            {
+                return ShouldPoll && _connection != null;
+            }
+        }
+
         public void ConnectAndStartPolling(IPAddress address)
         {
             Connection connection = new Connection("HEL.AEROSPACE Flight Viewer", address);
@@ -92,6 +101,7 @@ namespace kRPCLib.Viewmodels
             _shouldPoll = true;
             _pollingThread = new Thread(Poll);
             _pollingThread.Start();
+            OnPropertyChanged("IsConnected");
         }
 
         public void UpdateFromRPC(Vessel vessel)
@@ -122,7 +132,11 @@ namespace kRPCLib.Viewmodels
                 }
                 catch (Exception e)
                 {
-                    Notifications.LastNotificationMessage = string.Format("Error on update: {0}", e.Message);
+                    _shouldPoll = false;
+                    _connection = null;
+                    _spaceCenter = null;
+                    Notifications.LastErrorMessage = string.Format("Error on update: {0}", e.Message);
+                    OnPropertyChanged("IsConnected");
                 }
                 Thread.Sleep(100);
             }

@@ -19,7 +19,19 @@ namespace kRPClient
             Notifications = new NotificationView();
             Notifications.PropertyChanged += Notifications_PropertyChanged;
 
-            DataContext = Viewmodel = new FlightDisplayModel(Notifications);
+            DataContext = Viewmodel = new FlightDisplayModel(Notifications); 
+            Viewmodel.PropertyChanged += Viewmodel_PropertyChanged;
+        }
+
+        void Viewmodel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsConnected")
+            {
+                if (!Viewmodel.IsConnected)
+                {
+                    SetLoadMaskVisibility(true);
+                }
+            }
         }
 
         public FlightDisplayModel Viewmodel { get; set; }
