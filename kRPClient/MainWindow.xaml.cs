@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
+using System.Net;
 using System.Windows;
 
 namespace kRPClient
@@ -42,11 +43,13 @@ namespace kRPClient
             }
         }
 
-        private void ConnectMenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void ConnectMenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
-                Viewmodel.ConnectAndStartPolling();
+                var ip = await this.ShowInputAsync("Enter IP", "Enter an IP address to connect to. Leave empty to connect to localhost.");
+                IPAddress address = IPAddress.Parse(string.IsNullOrWhiteSpace(ip) ? "127.0.0.1" : ip);
+                Viewmodel.ConnectAndStartPolling(address);
             }
             catch(Exception exc)
             {

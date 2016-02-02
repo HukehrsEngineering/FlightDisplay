@@ -1,5 +1,6 @@
 ﻿using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
+using System.Net;
 using System.Threading;
 
 namespace kRPCLib.Viewmodels
@@ -112,9 +113,9 @@ namespace kRPCLib.Viewmodels
             }
         }
 
-        public void ConnectAndStartPolling()
+        public void ConnectAndStartPolling(IPAddress address)
         {
-            Connection connection = new Connection("HEL.AEROSPACE Flight Viewer");
+            Connection connection = new Connection("HEL.AEROSPACE Flight Viewer", address);
             SetConnectionAndStartPolling(connection);
         }
     }
