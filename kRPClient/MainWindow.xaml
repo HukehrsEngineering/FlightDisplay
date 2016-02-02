@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:displays="clr-namespace:kRPClient.Displays"
-        Title="HEL.AEROSPACE Flight View" Height="1000" Width="1200" >
+        Title="HEL.AEROSPACE Flight View" Height="1000" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -16,20 +16,19 @@
 
         <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_Connect" Name="ConnectMenuItem" Click="ConnectMenuItem_Click"/>
-                <MenuItem Header="_Quit" Name="QuitMenuItem" Click="QuitMenuItem_Click"/>
+                <MenuItem Header="_Connect" Name="ConnectMenuItem" Click="ConnectMenuItem_Click" />
+                <MenuItem Header="_Quit" Name="QuitMenuItem" Click="QuitMenuItem_Click" />
             </MenuItem>
         </Menu>
 
         <Grid Grid.Row="1" Panel.ZIndex="1000" Background="#E000" Name="LoadMask">
-            <Label Content="NOT CONNECTED" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" Foreground="White"/>
+            <Label Content="NOT CONNECTED" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" Foreground="White" />
         </Grid>
-        
 
         <Grid ShowGridLines="False" Grid.Row="1" Panel.ZIndex="100">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="64" />
@@ -41,14 +40,14 @@
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding FlightName}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ContentStringFormat="HEL.AEROSPACE FLIGHT {0}" FontSize="32"/>
+            <Label Content="{Binding FlightName}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ContentStringFormat="HEL.AEROSPACE FLIGHT {0}" FontSize="32" />
 
             <displays:FlightDataDisplay Grid.Row="1" Grid.Column="0" />
             <displays:OrbitDataDisplay Grid.Row="2" Grid.Column="0" />
             <displays:SensorDataDisplay Grid.Row="3" Grid.Column="0" />
-            <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top"/>
+            <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" />
 
-            <displays:MapDisplay Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <displays:MapDisplay Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </Grid>
         <StatusBar Grid.Row="2" Grid.Column="0">
             <StatusBarItem>
@@ -56,5 +55,4 @@
             </StatusBarItem>
         </StatusBar>
     </Grid>
-    
 </Metro:MetroWindow>

@@ -6,11 +6,11 @@ namespace kRPCLib.Viewmodels
     public class OrbitViewModel : BaseViewModel
     {
         private double _apoapsis;
+        private double _longitudeOfAscending;
         private double _periapsis;
         private TimeSpan _timeToApoapsis;
         private TimeSpan _timeToPeriapsis;
         private double _velocity;
-        private double _longitudeOfAscending;
 
         public double Apoapsis
         {

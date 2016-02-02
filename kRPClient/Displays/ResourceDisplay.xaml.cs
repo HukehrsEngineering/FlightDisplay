@@ -1,18 +1,6 @@
-﻿using kRPCLib.Viewmodels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace kRPClient.Displays
 {
@@ -21,7 +9,6 @@ namespace kRPClient.Displays
     /// </summary>
     public partial class ResourceDisplay : UserControl
     {
-        
         // Using a DependencyProperty as the backing store for MyHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MyHeaderProperty =
             DependencyProperty.Register("MyHeader", typeof(string), typeof(ResourcesDisplay), new PropertyMetadata(default(string), new PropertyChangedCallback(OnLabelChanged)));
@@ -30,15 +17,11 @@ namespace kRPClient.Displays
         public static readonly DependencyProperty ResourcesShownProperty =
             DependencyProperty.Register("ResourcesShown", typeof(string), typeof(ResourcesDisplay), new PropertyMetadata(default(string), new PropertyChangedCallback(OnResourcesShownChanged)));
 
-        private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            ResourcesDisplay resourcesDisplay = (ResourcesDisplay)d;
-            resourcesDisplay.Content = (string)e.NewValue;
-        }
+        private bool hasInit = false;
 
-        private static void OnResourcesShownChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public ResourceDisplay()
         {
-            ResourcesDisplay resourcesDisplay = (ResourcesDisplay)d;
-            resourcesDisplay.ResourcesShown = (string)e.NewValue;
+            InitializeComponent();
         }
 
         public string MyHeader
@@ -46,6 +29,7 @@ namespace kRPClient.Displays
             get { return (string)GetValue(MyHeaderProperty); }
             set { SetValue(MyHeaderProperty, value); HeaderLabel.Content = value; }
         }
+
         public string ResourcesShown
         {
             get { return (string)GetValue(ResourcesShownProperty); }
@@ -56,17 +40,28 @@ namespace kRPClient.Displays
             }
         }
 
-        bool hasInit = false;
-        void AddToGridAt(UIElement element, int row, int column)
+        private static void OnLabelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ResourcesDisplay resourcesDisplay = (ResourcesDisplay)d;
+            resourcesDisplay.Content = (string)e.NewValue;
+        }
+
+        private static void OnResourcesShownChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ResourcesDisplay resourcesDisplay = (ResourcesDisplay)d;
+            resourcesDisplay.ResourcesShown = (string)e.NewValue;
+        }
+
+        private void AddToGridAt(UIElement element, int row, int column)
         {
             Grid.SetColumn(element, column);
             Grid.SetRow(element, row);
             ResourceGrid.Children.Add(element);
         }
 
-        void BuildResourceDisplay()
+        private void BuildResourceDisplay()
         {
-            if(!hasInit && !string.IsNullOrWhiteSpace(ResourcesShown))
+            if (!hasInit && !string.IsNullOrWhiteSpace(ResourcesShown))
             {
                 var resourcesToDisplay = ResourcesShown.Split(new char[] { ',' });
 
@@ -76,7 +71,7 @@ namespace kRPClient.Displays
                 //ResourceGrid.ShowGridLines = true;
                 var overviewModel = ((MainWindow)((Grid)this.Parent).Parent).DataContext;
 
-                foreach(var resource in resourcesToDisplay)
+                foreach (var resource in resourcesToDisplay)
                 {
                     RowDefinition row = new RowDefinition() { Height = rowHeight };
                     ResourceGrid.RowDefinitions.Add(row);
@@ -120,10 +115,6 @@ namespace kRPClient.Displays
                 this.UpdateLayout();
                 hasInit = true;
             }
-        }
-        public ResourceDisplay()
-        {
-            InitializeComponent();
         }
     }
 }

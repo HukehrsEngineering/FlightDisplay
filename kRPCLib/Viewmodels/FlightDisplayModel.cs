@@ -1,6 +1,5 @@
 ﻿using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
-using KRPC.Client.Services.KRPC;
 using System;
 using System.Net;
 using System.Threading;
@@ -43,6 +42,14 @@ namespace kRPCLib.Viewmodels
             set { _flightName = value; OnPropertyChanged(); }
         }
 
+        public bool IsConnected
+        {
+            get
+            {
+                return ShouldPoll && _connection != null;
+            }
+        }
+
         public MapCoordinateView MapCoordinates
         {
             get;
@@ -77,14 +84,6 @@ namespace kRPCLib.Viewmodels
         {
             get { return _shouldPoll; }
             set { _shouldPoll = value; }
-        }
-
-        public bool IsConnected
-        {
-            get
-            {
-                return ShouldPoll && _connection != null;
-            }
         }
 
         public void ConnectAndStartPolling(IPAddress address)

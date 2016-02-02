@@ -1,6 +1,5 @@
 ﻿using kRPCLib.Viewmodels;
 using NUnit.Framework;
-using System;
 
 namespace LibTests
 {
