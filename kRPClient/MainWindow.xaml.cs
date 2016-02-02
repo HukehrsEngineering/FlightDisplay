@@ -19,7 +19,7 @@ namespace kRPClient
             Notifications = new NotificationView();
             Notifications.PropertyChanged += Notifications_PropertyChanged;
 
-            DataContext = Viewmodel = new FlightDisplayModel();
+            DataContext = Viewmodel = new FlightDisplayModel(Notifications);
         }
 
         public FlightDisplayModel Viewmodel { get; set; }
@@ -31,15 +31,21 @@ namespace kRPClient
             Viewmodel.ShouldPoll = false;
         }
 
-        private async void Notifications_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Notifications_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "LastNotificationMessage")
             {
-                StatusNotifications.Content = string.Format("{0}: {1}", DateTime.Now, Notifications.LastNotificationMessage);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    StatusNotifications.Content = string.Format("{0}: {1}", DateTime.Now, Notifications.LastNotificationMessage);
+                }));
             }
             else if (e.PropertyName == "LastErrorMessage")
             {
-                await this.ShowMessageAsync("Error", Notifications.LastErrorMessage);
+                this.Dispatcher.Invoke((Action)(() =>
+                {
+                    this.ShowMessageAsync("Error", Notifications.LastErrorMessage);
+                }));
             }
         }
 

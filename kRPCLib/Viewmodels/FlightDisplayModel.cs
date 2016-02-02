@@ -1,5 +1,6 @@
 ﻿using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
+using System;
 using System.Net;
 using System.Threading;
 
@@ -13,8 +14,9 @@ namespace kRPCLib.Viewmodels
         private bool _shouldPoll;
         private Service _spaceCenter;
 
-        public FlightDisplayModel()
+        public FlightDisplayModel(NotificationView notifications)
         {
+            Notifications = notifications;
             MapCoordinates = new MapCoordinateView()
             {
                 DisplayWidth = 640 * 2,
@@ -64,6 +66,12 @@ namespace kRPCLib.Viewmodels
             private set;
         }
 
+        public NotificationView Notifications
+        {
+            get;
+            set;
+        }
+
         public bool ShouldPoll
         {
             get { return _shouldPoll; }
@@ -106,8 +114,9 @@ namespace kRPCLib.Viewmodels
                 {
                     UpdateFromRPC(_spaceCenter.ActiveVessel);
                 }
-                catch (KRPC.Client.RPCException)
+                catch (Exception e)
                 {
+                    Notifications.LastNotificationMessage = string.Format("Error on update: {0}", e.Message);
                 }
                 Thread.Sleep(100);
             }
