@@ -60,6 +60,7 @@
     <Compile Include="Viewmodels\ResourceView.cs" />
     <Compile Include="Viewmodels\SensorsViewModel.cs" />
     <Compile Include="Viewmodels\FlightDisplayModel.cs" />
+    <Compile Include="Viewmodels\VesselViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

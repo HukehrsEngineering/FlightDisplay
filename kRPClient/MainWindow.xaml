@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="64" />
+                <RowDefinition Height="128" />
                 <RowDefinition Height="160" />
                 <RowDefinition Height="192" />
                 <RowDefinition Height="160" />
@@ -40,14 +40,14 @@
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding FlightName}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ContentStringFormat="HEL.AEROSPACE FLIGHT {0}" FontSize="32" />
-
+            <displays:VesselDisplay Grid.Row="0" Grid.Column="0" />
             <displays:FlightDataDisplay Grid.Row="1" Grid.Column="0" />
             <displays:OrbitDataDisplay Grid.Row="2" Grid.Column="0" />
-            <displays:SensorDataDisplay Grid.Row="3" Grid.Column="0" />
+            <displays:SensorDataDisplay Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" />
+
             <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" />
 
-            <displays:MapDisplay Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <displays:MapDisplay Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </Grid>
         <StatusBar Grid.Row="2" Grid.Column="0">
             <StatusBarItem>

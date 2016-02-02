@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Displays\VesselDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,6 +121,9 @@
     </Compile>
     <Compile Include="Displays\SensorDataDisplay.xaml.cs">
       <DependentUpon>SensorDataDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Displays\VesselDisplay.xaml.cs">
+      <DependentUpon>VesselDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -17,6 +17,7 @@ namespace kRPCLib.Viewmodels
         public FlightDisplayModel(NotificationView notifications)
         {
             Notifications = notifications;
+            Vessel = new VesselViewModel();
             MapCoordinates = new MapCoordinateView()
             {
                 DisplayWidth = 640 * 2,
@@ -86,6 +87,12 @@ namespace kRPCLib.Viewmodels
             set { _shouldPoll = value; }
         }
 
+        public VesselViewModel Vessel
+        {
+            get;
+            set;
+        }
+
         public void ConnectAndStartPolling(IPAddress address)
         {
             Connection connection = new Connection("HEL.AEROSPACE Flight Viewer", address);
@@ -115,6 +122,7 @@ namespace kRPCLib.Viewmodels
             Orbit.Update(vessel.Orbit);
             Flight.Update(flight);
             FlightName = vessel.Name;
+            Vessel.Update(vessel);
             Sensors.UpdateSensorData(parts.Sensors);
             MapCoordinates.Update(Flight.Latitude, Flight.Longitude, vessel.Orbit.LongitudeOfAscendingNode);
             MapCoordinates.Planet = vessel.Orbit.Body.Name;
