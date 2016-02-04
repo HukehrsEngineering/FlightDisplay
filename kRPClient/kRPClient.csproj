@@ -84,10 +84,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Displays\ResourcesDisplay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Displays\SensorDataDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,9 +111,6 @@
     </Compile>
     <Compile Include="Displays\ResourceDisplay.xaml.cs">
       <DependentUpon>ResourceDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Displays\ResourcesDisplay.xaml.cs">
-      <DependentUpon>ResourcesDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Displays\SensorDataDisplay.xaml.cs">
       <DependentUpon>SensorDataDisplay.xaml</DependentUpon>
