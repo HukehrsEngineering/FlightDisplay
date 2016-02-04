@@ -36,11 +36,13 @@ namespace kRPCLib.Viewmodels
     {
         private IDictionary<string, ResourceTuple> _resources;
         private string[] fuelNames = new string[] { "ElectricCharge", "LiquidFuel", "Oxidizer", "SolidFuel", "MonoPropellant" };
+        private string[] lifeSupportNames = new string[] { "Food", "Water", "Oxygen", "CarbonDioxide", "Waste", "WasteWater" };
 
         public ResourceView()
         {
             Resources = new Dictionary<string, ResourceTuple>();
             Fuels = new List<ResourceTuple>();
+            LifeSupport = new List<ResourceTuple>();
 
             foreach (var fuelName in fuelNames)
             {
@@ -48,9 +50,22 @@ namespace kRPCLib.Viewmodels
                 Resources[fuelName] = tuple;
                 Fuels.Add(tuple);
             }
+
+            foreach (var lifeSupportName in lifeSupportNames)
+            {
+                ResourceTuple tuple = new ResourceTuple { Name = lifeSupportName };
+                Resources[lifeSupportName] = tuple;
+                LifeSupport.Add(tuple);
+            }
         }
 
         public IList<ResourceTuple> Fuels
+        {
+            get;
+            set;
+        }
+
+        public IList<ResourceTuple> LifeSupport
         {
             get;
             set;
