@@ -36,7 +36,7 @@ namespace kRPCLib.Viewmodels
     {
         private IDictionary<string, ResourceTuple> _resources;
         private string[] fuelNames = new string[] { "ElectricCharge", "LiquidFuel", "Oxidizer", "SolidFuel", "MonoPropellant" };
-        private string[] lifeSupportNames = new string[] { "Food", "Water", "Oxygen", "CarbonDioxide", "Waste", "WasteWater" };
+        private string[] lifeSupportNames = new string[] { "Food", "Waste", "Water", "WasteWater", "Oxygen", "CarbonDioxide" };
 
         public ResourceView()
         {
