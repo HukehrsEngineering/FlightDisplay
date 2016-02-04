@@ -5,41 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Name="ResourceGrid" ShowGridLines="False">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
 
-        <Label Name="HeaderLabel" Grid.Column="0" Grid.Row="0"  FontSize="16" />
-        <DataGrid Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Resources.Fuels}" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Resource" Binding="{Binding Name}" />
-                <DataGridTemplateColumn Header="Status" Width="*" CanUserSort="True" SortMemberPath="Ratio">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ProgressBar Value="{Binding Ammount}" Minimum="0" Maximum="{Binding Maximum}" Height="32" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Ammount" Width="100" CanUserSort="True" SortMemberPath="Ammount">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding Ammount}" ContentStringFormat="N2" HorizontalAlignment="Right" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Maximum" Width="100" CanUserSort="True" SortMemberPath="Maximum">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding Maximum}" ContentStringFormat="N2" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <DataGrid Name="DisplayGrid" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Resource" Binding="{Binding Name}" />
+            <DataGridTemplateColumn Header="Status" Width="*" CanUserSort="True" SortMemberPath="Ratio">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <ProgressBar Value="{Binding Ammount}" Minimum="0" Maximum="{Binding Maximum}" Height="32" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="Ammount" Width="100" CanUserSort="True" SortMemberPath="Ammount">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Ammount}" ContentStringFormat="N2" HorizontalAlignment="Right" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="Maximum" Width="100" CanUserSort="True" SortMemberPath="Maximum">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Maximum}" ContentStringFormat="N2" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
 </UserControl>

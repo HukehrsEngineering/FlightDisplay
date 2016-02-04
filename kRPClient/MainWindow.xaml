@@ -45,7 +45,7 @@
             <displays:OrbitDataDisplay Grid.Row="2" Grid.Column="0" />
             <displays:SensorDataDisplay Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" />
 
-            <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" />
+            <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" ResourceItems="Fuels" />
 
             <displays:MapDisplay Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </Grid>
