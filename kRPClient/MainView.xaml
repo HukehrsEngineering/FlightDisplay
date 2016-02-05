@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-             xmlns:displays="clr-namespace:kRPClient.Displays"
+             xmlns:tabs="clr-namespace:kRPClient.Tabs"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -13,40 +13,10 @@
         </Grid>
         <TabControl>
             <TabItem Header="Overview">
-                <Grid ShowGridLines="False">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="128" />
-                        <RowDefinition Height="160" />
-                        <RowDefinition Height="192" />
-                        <RowDefinition Height="160" />
-                        <RowDefinition />
-                        <RowDefinition Height="288" />
-                        <RowDefinition Height="32" />
-                    </Grid.RowDefinitions>
-
-                    <displays:VesselDisplay Grid.Row="0" Grid.Column="0" />
-                    <displays:FlightDataDisplay Grid.Row="1" Grid.Column="0" />
-                    <displays:OrbitDataDisplay Grid.Row="2" Grid.Column="0" />
-                    <displays:SensorDataDisplay Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" />
-
-                    <displays:ResourceDisplay Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" ResourceItems="Fuels" />
-
-                    <displays:MapDisplay Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                </Grid>
+                <tabs:OverviewTab />
             </TabItem>
             <TabItem Header="All Resources">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <displays:ResourceDisplay Grid.Row="0" VerticalAlignment="Top" ResourceItems="Fuels" />
-                    <displays:ResourceDisplay Grid.Row="1" VerticalAlignment="Top" ResourceItems="LifeSupport" />
-                </Grid>
+                <tabs:ResourcesTab />
             </TabItem>
         </TabControl>
     </Grid>

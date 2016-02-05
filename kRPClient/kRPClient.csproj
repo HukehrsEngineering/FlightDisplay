@@ -71,8 +71,14 @@
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Settings.xaml.cs">
+    <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\OverviewTab.xaml.cs">
+      <DependentUpon>OverviewTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\ResourcesTab.xaml.cs">
+      <DependentUpon>ResourcesTab.xaml</DependentUpon>
     </Compile>
     <Page Include="Displays\OrbitDataDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,7 +138,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-	<Page Include="Settings.xaml">
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs\OverviewTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs\ResourcesTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
