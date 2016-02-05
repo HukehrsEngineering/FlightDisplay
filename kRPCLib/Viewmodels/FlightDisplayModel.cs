@@ -31,6 +31,14 @@ namespace kRPCLib.Viewmodels
             Orbit = new OrbitViewModel();
         }
 
+        public bool AreViewsEnabled
+        {
+            get
+            {
+                return !IsConnected;
+            }
+        }
+
         public FlightViewModel Flight
         {
             get;
@@ -107,7 +115,7 @@ namespace kRPCLib.Viewmodels
             _shouldPoll = true;
             _pollingThread = new Thread(Poll);
             _pollingThread.Start();
-            OnPropertyChanged("IsConnected");
+            ConnectedAndViewsVisbilityChanged();
         }
 
         public void UpdateFromRPC(Vessel vessel)
@@ -129,6 +137,12 @@ namespace kRPCLib.Viewmodels
             Resources.Update(vessel.Resources);
         }
 
+        private void ConnectedAndViewsVisbilityChanged()
+        {
+            OnPropertyChanged("IsConnected");
+            OnPropertyChanged("AreViewsEnabled");
+        }
+
         private void Poll()
         {
             while (_shouldPoll)
@@ -143,7 +157,7 @@ namespace kRPCLib.Viewmodels
                     _connection = null;
                     _spaceCenter = null;
                     Notifications.LastErrorMessage = string.Format("Error on update: {0}", e.Message);
-                    OnPropertyChanged("IsConnected");
+                    ConnectedAndViewsVisbilityChanged();
                 }
                 Thread.Sleep(100);
             }

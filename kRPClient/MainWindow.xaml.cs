@@ -20,7 +20,6 @@ namespace kRPClient
             Notifications.PropertyChanged += Notifications_PropertyChanged;
 
             DataContext = Viewmodel = new FlightDisplayModel(Notifications);
-            Viewmodel.PropertyChanged += Viewmodel_PropertyChanged;
         }
 
         public FlightDisplayModel Viewmodel { get; set; }
@@ -40,12 +39,10 @@ namespace kRPClient
                 var ip = await this.ShowInputAsync("Enter IP", "Enter an IP address to connect to. Leave empty to connect to localhost.");
                 IPAddress address = IPAddress.Parse(string.IsNullOrWhiteSpace(ip) ? "127.0.0.1" : ip);
                 Viewmodel.ConnectAndStartPolling(address);
-                SetLoadMaskVisibility(false);
             }
             catch (Exception exc)
             {
                 Notifications.LastErrorMessage = string.Format("Could not connect to KRPC-Server: {0}", exc.Message);
-                SetLoadMaskVisibility(true);
             }
         }
 
@@ -70,25 +67,6 @@ namespace kRPClient
         private void QuitMenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void SetLoadMaskVisibility(bool visible)
-        {
-            this.Dispatcher.Invoke((Action)(() =>
-                {
-                    LoadMask.Visibility = visible ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
-                }));
-        }
-
-        private void Viewmodel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "IsConnected")
-            {
-                if (!Viewmodel.IsConnected)
-                {
-                    SetLoadMaskVisibility(true);
-                }
-            }
         }
     }
 }
