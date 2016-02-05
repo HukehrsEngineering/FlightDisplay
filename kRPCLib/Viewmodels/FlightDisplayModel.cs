@@ -134,7 +134,7 @@ namespace kRPCLib.Viewmodels
             Sensors.UpdateSensorData(parts.Sensors);
             MapCoordinates.Update(Flight.Latitude, Flight.Longitude, vessel.Orbit.LongitudeOfAscendingNode);
             MapCoordinates.Planet = vessel.Orbit.Body.Name;
-            Resources.Update(vessel.Resources);
+            Resources.Update(vessel.Resources, vessel.MET);
         }
 
         private void ConnectedAndViewsVisbilityChanged()

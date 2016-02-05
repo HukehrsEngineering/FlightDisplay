@@ -4,14 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:displays="clr-namespace:kRPClient.Displays"
+             xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <displays:ResourceDisplay Grid.Row="0" VerticalAlignment="Top" ResourceItems="Fuels" />
-        <displays:ResourceDisplay Grid.Row="1" VerticalAlignment="Top" ResourceItems="LifeSupport" />
+        <displays:ResourceDisplay Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" ResourceItems="Fuels" />
+        <oxy:PlotView Name="FuelPlot" Grid.Row="0" Grid.Column="1" Model="{Binding Resources.FuelsPlot.Plot}" />
+
+        <displays:ResourceDisplay Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" ResourceItems="LifeSupport" />
+        <oxy:PlotView Name="LifeSupportPlot" Grid.Row="1" Grid.Column="1" Model="{Binding Resources.LifeSupportPlot.Plot}" />
     </Grid>
 </UserControl>

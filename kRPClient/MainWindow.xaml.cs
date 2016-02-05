@@ -14,12 +14,11 @@ namespace kRPClient
     {
         public MainWindow()
         {
+            Notifications = new NotificationView();
+            DataContext = Viewmodel = new FlightDisplayModel(Notifications);
             InitializeComponent();
 
-            Notifications = new NotificationView();
             Notifications.PropertyChanged += Notifications_PropertyChanged;
-
-            DataContext = Viewmodel = new FlightDisplayModel(Notifications);
         }
 
         public FlightDisplayModel Viewmodel { get; set; }

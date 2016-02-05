@@ -60,6 +60,7 @@
     <Compile Include="Viewmodels\MapCoordinateView.cs" />
     <Compile Include="Viewmodels\NotificationView.cs" />
     <Compile Include="Viewmodels\OrbitViewModel.cs" />
+    <Compile Include="Viewmodels\PlotViewModel.cs" />
     <Compile Include="Viewmodels\ResourceView.cs" />
     <Compile Include="Viewmodels\SensorsViewModel.cs" />
     <Compile Include="Viewmodels\FlightDisplayModel.cs" />
