@@ -42,6 +42,9 @@
     <Reference Include="KRPC.Client">
       <HintPath>..\packages\KRPC.Client.0.2.0-beta1\lib\net40\KRPC.Client.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable1978\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
