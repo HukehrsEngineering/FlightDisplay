@@ -13,11 +13,13 @@
                 </Image.Source>
                 -->
             </Image>
-            <Image Width="{Binding MapCoordinates.ShapeSize}" Height="{Binding MapCoordinates.ShapeSize}" Canvas.Left="{Binding MapCoordinates.PositionX}" Canvas.Bottom="{Binding MapCoordinates.PositionY}" Panel.ZIndex="20">
+            <!--Image Width="{Binding MapCoordinates.ShapeSize}" Height="{Binding MapCoordinates.ShapeSize}" Canvas.Left="{Binding MapCoordinates.PositionX}" Canvas.Bottom="{Binding MapCoordinates.PositionY}" Panel.ZIndex="20">
                 <Image.Source>
                     <BitmapImage UriSource="/Icons/communication6.png" />
                 </Image.Source>
-            </Image>
+            </Image-->
+            <Rectangle Width="{Binding MapCoordinates.DisplayWidth}" Height="3" Fill="Red" Canvas.Bottom="{Binding MapCoordinates.PositionY}" Panel.ZIndex="20"/>
+            <Rectangle Height="{Binding MapCoordinates.DisplayHeight}" Width="3" Fill="Red" Canvas.Left="{Binding MapCoordinates.PositionX}" Panel.ZIndex="20"/>
             <!--<Ellipse Width="{Binding MapCoordinates.ShapeAscendingNodeSize}" Height="{Binding MapCoordinates.ShapeAscendingNodeSize}" Canvas.Left="{Binding MapCoordinates.PositionAscendingNodeX}" Canvas.Bottom="{Binding MapCoordinates.PositionAscendingNodeY}" Panel.ZIndex="20" Fill="Green" />-->
         </Canvas>
     </Viewbox>
