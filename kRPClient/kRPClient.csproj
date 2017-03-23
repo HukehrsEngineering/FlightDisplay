@@ -44,7 +44,7 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA028\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
-	<Reference Include="OxyPlot">
+    <Reference Include="OxyPlot">
       <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable1978\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
     <Reference Include="OxyPlot.Wpf">
@@ -77,6 +77,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\EngineControll.xaml.cs">
+      <DependentUpon>EngineControll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Displays\EngineView.xaml.cs">
+      <DependentUpon>EngineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -89,6 +95,14 @@
     <Compile Include="Tabs\ResourcesTab.xaml.cs">
       <DependentUpon>ResourcesTab.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\EngineControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Displays\EngineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Displays\OrbitDataDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -198,6 +212,9 @@
     <Resource Include="Maps\Kerbin.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Graphics\ThrustDisplay\background.png" />
+    <Resource Include="Graphics\ThrustDisplay\long_thin_hand.png" />
+    <Resource Include="Graphics\ThrustDisplay\short_fat_hand.png" />
     <Content Include="Icons\Authors.html" />
     <Resource Include="Maps\Empty.jpg" />
     <Resource Include="Maps\Mun.jpg" />

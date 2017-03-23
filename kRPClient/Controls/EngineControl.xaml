@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="kRPClient.Controls.EngineControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:kRPClient.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+        <Image Source="/Graphics/ThrustDisplay/background.png"></Image>
+        <Image Source="/Graphics/ThrustDisplay/short_fat_hand.png" >
+            <Image.RenderTransform>
+                <RotateTransform CenterX="250" CenterY="250" Angle="67"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
+        <Image Source="/Graphics/ThrustDisplay/long_thin_hand.png" >
+            <Image.RenderTransform>
+                <RotateTransform CenterX="250" CenterY="250" Angle="-155"></RotateTransform>
+            </Image.RenderTransform>
+        </Image>
+        <Label Foreground="White" FontSize="100" VerticalContentAlignment="Bottom" HorizontalAlignment="Right" FontFamily="Courier New" Content="{}"/>
+    </Grid>
+</UserControl>
